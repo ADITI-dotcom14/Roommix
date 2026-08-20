@@ -761,6 +761,13 @@ app.post("/api/meetings/:meetingId/end", async (req, res) => {
         message: "Meeting not found",
       });
     }
+    // ONLY the actual host can end the meeting
+    if (requesterIdentity !== meeting.hostIdentity) {
+      return res.status(403).json({
+        success: false,
+        message: "Only the host can end the meeting",
+      });
+    }
 
     if (!requesterIdentity) {
       return res.status(400).json({
@@ -770,12 +777,7 @@ app.post("/api/meetings/:meetingId/end", async (req, res) => {
     }
 
     // ONLY the actual host can end the meeting
-    if (requesterIdentity !== meeting.hostIdentity) {
-      return res.status(403).json({
-        success: false,
-        message: "Only the host can end the meeting",
-      });
-    }
+    
 
     meeting.ended = true;
 
