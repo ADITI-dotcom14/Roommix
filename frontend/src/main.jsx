@@ -13,9 +13,7 @@ import {
 } from "livekit-client";
 import "@livekit/components-styles";
 import "./style.css";
-
-const API = "const API = "https://roommix-backend.onrender.com";
-
+const API = "https://roommix-backend.onrender.com";
 function RoomMixLiveMeeting({
   token,
   meeting,
