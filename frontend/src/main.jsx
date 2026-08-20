@@ -14,7 +14,7 @@ import {
 import "@livekit/components-styles";
 import "./style.css";
 
-const API = "http://localhost:5000";
+const API = "const API = "https://roommix-backend.onrender.com";
 
 function RoomMixLiveMeeting({
   token,
