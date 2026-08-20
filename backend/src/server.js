@@ -431,12 +431,7 @@ app.post("/api/meetings/join", (req, res) => {
     }
 
     const meeting = meetings.get(meetingId);
-    if (meeting.ended) {
-  return res.status(403).json({
-    success: false,
-    message: "This meeting has ended.",
-  });
-}
+   
 
     if (!meeting) {
       return res.status(404).json({
@@ -444,6 +439,12 @@ app.post("/api/meetings/join", (req, res) => {
         message: "Meeting not found. Check the meeting ID.",
       });
     }
+     if (meeting.ended) {
+  return res.status(403).json({
+    success: false,
+    message: "This meeting has ended.",
+  });
+}
 
     if (meeting.locked) {
       return res.status(403).json({
